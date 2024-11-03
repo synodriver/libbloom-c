@@ -40,7 +40,7 @@ PyBloom_tp_new(PyTypeObject *subtype, PyObject *args, PyObject *kwds) // __cinit
     {
         bloom_free(ptr);
         PyMem_RawFree(ptr);
-        return PyErr_NoMemory();
+        return NULL; // PyType_GenericAlloc will set error here
     }
 
     self->ptr = ptr;
